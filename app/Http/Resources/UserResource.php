@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class LinkResource extends JsonResource
+class UserResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -16,8 +16,12 @@ class LinkResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'code' => $this->code,
-            'orders' => OrderResource::collection($this->whenLoaded('orders'))
+            'first_name' => $this->first_name,
+            'last_name' => $this->last_name,
+            'email' => $this->email,
+            $this->mergeWhen($request->path() === 'api/affiliate/user', [
+                'revenue' => $this->revenue
+            ])
         ];
     }
 }

@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class LinkResource extends JsonResource
+class OrderResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -16,8 +16,10 @@ class LinkResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'code' => $this->code,
-            'orders' => OrderResource::collection($this->whenLoaded('orders'))
+            'name' => $this->name,
+            'email' => $this->email,
+            'total' => $this->admin_revenue,
+            'order_items' => OrderItemResource::collection($this->whenLoaded('orderItems'))
         ];
     }
 }
