@@ -22,4 +22,19 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
+
+    public function scopeAffiliates($query)
+    {
+        return $query->where('is_admin', 0);
+    }
+
+    public function scopeAdmins($query)
+    {
+        return $query->where('is_admin', 1);
+    }
+
+    public function getNameAttribute()
+    {
+        return $this->first_name . ' ' . $this->last_name;
+    }
 }
