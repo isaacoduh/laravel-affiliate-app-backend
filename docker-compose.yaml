@@ -21,3 +21,8 @@ services:
       - ./storage/dbdata:/var/lib/mysql
     ports:
       - 33066:3306
+  
+  redis:
+    image: redis
+    ports:
+      - 63799:6379
