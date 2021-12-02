@@ -25,4 +25,4 @@ services:
   redis:
     image: redis
     ports:
-      - 63799:6379
+      - 6379:6379
