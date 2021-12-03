@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\LinkController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\StatsController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -55,5 +56,18 @@ Route::prefix('admin')->group(function() {
         Route::get('orders', [OrderController::class,'index']);
 
         Route::apiResource('products', ProductController::class);
+    });
+});
+
+Route::prefix('affiliate')->group(function(){
+    common('scope.affiliate');
+
+    Route::get('products/frontend',[ProductController::class,'frontend']);
+    Route::get('products/backend', [ProductController::class,'backend']);
+
+    Route::middleware(['auth:sanctum', 'scope.affiliate'])->group(function() {
+        Route::post('links', [LinkController::class,'store']);
+        Route::get('stats', [StatsController::class, 'index']);
+        Route::get('rankings', [StatsController::class, 'rankings']);
     });
 });
