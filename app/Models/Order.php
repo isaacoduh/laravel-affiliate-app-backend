@@ -23,7 +23,7 @@ class Order extends Model
 
     public function getAdminRevenueAttribute()
     {
-        return $this->orderItems->sum(fn(OrderItem $item) =>  $item->admin_revennue);
+        return $this->orderItems->sum(fn(OrderItem $item) =>  $item->admin_revenue);
     }
 
     public function getAffiliateRevenueAttribute()

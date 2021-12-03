@@ -52,7 +52,7 @@ class OrderController extends Controller
                 $orderItem->product_title = $product->title;
                 $orderItem->price = $product->price;
                 $orderItem->quantity = $item['quantity'];
-                $orderItem->affilate_revenue = 0.1 * $product->price * $item['quantity'];
+                $orderItem->affiliate_revenue = 0.1 * $product->price * $item['quantity'];
                 $orderItem->admin_revenue = 0.9 * $product->price * $item['quantity'];
 
                 $orderItem->save();

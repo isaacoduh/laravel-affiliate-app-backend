@@ -1,1 +1,1 @@
-You earned ${{$order->ambassador_revenue}} from the link #{{$order->code}}
+You earned ${{$order->affiliate_revenue}} from the link #{{$order->code}}
